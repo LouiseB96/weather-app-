@@ -1,0 +1,103 @@
+body {
+  font-family: Raleway;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 44px;
+  margin: 50px auto;
+  text-align: center;
+  width: 350px;
+}
+
+input {
+  border-radius: 25px;
+  color: #35013f;
+  font: 16px system-ui;
+  height: 44px;
+  padding: 6px 15px;
+  text-align: center;
+  width: 380px;
+}
+
+.btn {
+  background-color: #35013f;
+  border-radius: 20px;
+  color: #c9b08c;
+}
+.btn:hover {
+  background: #fae5cb;
+  color: #35013f;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.current {
+  color: #35013f;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.temperature {
+  color: #35013f;
+  font-size: 60px;
+  font-family: Raleway;
+  margin: 25px 0px 0px 0px;
+}
+
+.date {
+  color: #fae5cb;
+  font-size: 20px;
+  font-weight: lighter;
+  margin: 30px 0px 0px 0px;
+}
+
+.time {
+  color: #fae5cb;
+  font-size: 20px;
+  font-weight: lighter;
+}
+.col-sm-4 {
+  color: #ead6be;
+  font-size: 35px;
+  text-align: center;
+  margin: 40px auto;
+  text-transform: capitalize;
+}
+
+.col {
+  color: #ead6be;
+  font-size: 20px;
+  text-align: center;
+  bottom: 45px;
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+video {
+  object-fit: fill;
+}
+
+a {
+  color: #35013f;
+  font-size: 20px;
+}

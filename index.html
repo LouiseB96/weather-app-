@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="src/style.css">
-    
-</head>
-<body>
-     <script src="src/index.js"></script>
-</body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form id="search-form">
+        <input
+          type="text"
+          placeholder="Location..."
+          autocomplete="off"
+          autofocus="on"
+          id="search-text-input"
+        />
+
+        <div class="form-check"></div>
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+        <button class="btn btn-outline-primary" id="current-location">
+          Current
+        </button>
+      </form>
+    </div>
+
+    <div class="current">
+      Current Temperature in
+      <div class="city" id="location">Manchester:</div>
+      <div class="temperature">
+        <span id="temp">⛅20</span>
+        <span>
+          <a href="#" id="celsius">°C</a>
+          <a href="#" id="fahrenheit">| °F</a>
+        </span>
+      </div>
+      <div class="date">Tuesday 20th July</div>
+      <div class="time">16:00</div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4" id="description">☁Partly Cloudy</div>
+        <div class="col-sm-4" id="feeling">Feels Like: 19°C</div>
+        <div class="col-sm-4" id="wind">🌬Wind: 10mph</div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="container">
+      <div class="row">
+        <div class="col">Wed</div>
+        <div class="col">Thu</div>
+        <div class="col">Fri</div>
+        <div class="col">Sat</div>
+        <div class="col">Sun</div>
+      </div>
+
+      <div class="row">
+        <div class="col">⛅17°C</div>
+        <div class="col">🌧19°C</div>
+        <div class="col">🌞22°C</div>
+        <div class="col">🌞21°C</div>
+        <div class="col">⛅18°C</div>
+      </div>
+    </div>
+
+    <div class="fullscreen-bg">
+      <video
+        class="fullscreen-bg__video"
+        src="video/Sunset.mp4"
+        loop
+        muted
+        autoplay
+      ></video>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
 </html>
