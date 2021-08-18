@@ -101,3 +101,11 @@ a {
   color: #35013f;
   font-size: 20px;
 }
+
+.code-link 
+{
+    color: #ead6be;
+    display:block;
+    text-align: center;
+    font-size: 15px;
+}
