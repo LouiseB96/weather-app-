@@ -21,12 +21,13 @@ form.addEventListener("submit", search);
 //Weather Api//
 
 function displayWeatherCondition(response) {
+  celsiusTemperature = Math.round(response.data.main.temp);
+
   let city = document.querySelector("#location");
   city.innerHTML = response.data.name;
 
-  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = `${temperature}`;
+  temperatureElement.innerHTML = `${celsiusTemperature}`;
 
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
@@ -38,6 +39,14 @@ function displayWeatherCondition(response) {
   let windRounded = Math.round(response.data.wind.speed);
   let wind = document.querySelector("#wind");
   wind.innerHTML = `Wind: ${windRounded}mph`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  console.log(response);
 }
 
 //Current Location//
@@ -47,10 +56,12 @@ function searchLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
+
 function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getCurrentLocation);
 
@@ -59,13 +70,14 @@ currentLocation.addEventListener("click", getCurrentLocation);
 function fahrenheit(event) {
   event.preventDefault();
   let tempoF = document.querySelector("#temp");
-  tempoF.innerHTML = "⛅68";
+  let fahrenheitConversion = Math.round((celsiusTemperature * 9) / 5 + 32);
+  tempoF.innerHTML = `${fahrenheitConversion}`;
 }
 
 function celsius(event) {
   event.preventDefault();
   let tempoC = document.querySelector("#temp");
-  tempoC.innerHTML = "⛅20";
+  tempoC.innerHTML = `${celsiusTemperature}`;
 }
 let fahrenheitTemp = document.querySelector("#fahrenheit");
 fahrenheitTemp.addEventListener("click", fahrenheit);
@@ -73,6 +85,7 @@ fahrenheitTemp.addEventListener("click", fahrenheit);
 let celsiusTemp = document.querySelector("#celsius");
 celsiusTemp.addEventListener("click", celsius);
 
+let celsiusTemperature = null;
 //Time and Date//
 
 let now = new Date();

@@ -102,10 +102,9 @@ a {
   font-size: 20px;
 }
 
-.code-link 
-{
-    color: #ead6be;
-    display:block;
-    text-align: center;
-    font-size: 15px;
+.code-link {
+  color: #ead6be;
+  display: block;
+  text-align: center;
+  font-size: 15px;
 }
