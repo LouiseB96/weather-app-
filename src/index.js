@@ -45,31 +45,43 @@ function displayWeatherCondition(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
   console.log(response);
   getForecast(response.data.coord);
 }
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  console.log(response.data);
+  let forecast = response.data.daily;
   let forecastContainer = document.querySelector(`#forecast-days`);
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
 
   let forecastHTML = ``;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-          <div class="weekdays">${day}</div>
+  forecast.forEach(function (day, index) {
+    if (index < 6 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
+          <div class="weekdays">${formatDay(day.dt)}</div>
           <img
-            src="https://openweathermap.org/img/wn/01d@2x.png"
+            src="https://openweathermap.org/img/wn/${
+              day.weather[0].icon
+            }@2x.png"
             alt width="36"
           />
           <div class="forecast-temp">
-            <span class="high">20</span>
-            <span class="low">18</span>
+            <span class="high">${Math.round(day.temp.max)}</span>
+            <span class="low">${Math.round(day.temp.min)}</span>
           </div>
         </div>`;
+    }
   });
 
   forecastContainer.innerHTML = forecastHTML;
