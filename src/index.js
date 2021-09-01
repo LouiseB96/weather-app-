@@ -46,8 +46,40 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  displayForecast();
   console.log(response);
+  getForecast(response.data.coord);
+}
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastContainer = document.querySelector(`#forecast-days`);
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = ``;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+          <div class="weekdays">${day}</div>
+          <img
+            src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt width="36"
+          />
+          <div class="forecast-temp">
+            <span class="high">20</span>
+            <span class="low">18</span>
+          </div>
+        </div>`;
+  });
+
+  forecastContainer.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "b65081e7ee4a0cdd9c660f2d72c26136";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //Current Location//
@@ -125,28 +157,3 @@ if (minutes < 10) {
 }
 
 time.innerHTML = `${hour}:${minutes}`;
-
-//Forecast//
-
-function displayForecast() {
-  let forecastContainer = document.querySelector(`#forecast-days`);
-  let forecastHTML = ``;
-
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-          <div class="weekdays">${day}</div>
-          <img
-            src="https://openweathermap.org/img/wn/01d@2x.png"
-            alt width="36"
-          />
-          <div class="forecast-temp">
-            <span class="high">20</span>
-            <span class="low">18</span>
-          </div>
-        </div>`;
-  });
-
-  forecastContainer.innerHTML = forecastHTML;
-}
