@@ -52,7 +52,6 @@ input {
   color: #fae5cb;
   font-size: 20px;
   font-weight: lighter;
-  margin: 30px 0px 0px 0px;
 }
 
 .time {
@@ -73,6 +72,10 @@ input {
   font-size: 20px;
   text-align: center;
   bottom: 45px;
+}
+.low {
+  color: grey;
+  font-size: 15px;
 }
 
 .fullscreen-bg {
